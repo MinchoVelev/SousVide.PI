@@ -1,7 +1,60 @@
 <!DOCTYPE HTML>
+<html lang="en">
 <head>
-	<title>Raspberry Sous Vide</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raspberry Sous Vide</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<link href="custom.css" rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+<script src="cooking.js"></script>
+<script type="text/javascript">
+	var cooking = new Cooking();
+	function init() {
+		cooking.startPolling();
+	}
+	function refreshRecipe() {
+		cooking.refreshRecipe();
+	}
+	function updateRecipe() {
+		cooking.updateRecipe();
+	}
+</script>
 </head>
-<body>
-	Management UI for the Raspberry Sous Vide
+<body onload="init()">
+	<div id="mainContainer" class="container text-center">
+		<img src="raspberry-pi-logo.png" class="img-responsive" alt="Logo">
+		<h1>Your SousVide.PI's Home</h1>
+		<span id="isCooking">xxx</span>
+		<div class="progress">
+			<div id="timebar" class="progress-bar progress-bar-danger"
+				role="progressbar" aria-valuenow="0" aria-valuemin="0"
+				aria-valuemax="100" style="width: 0%"></div>
+		</div>
+		<div id="statusDiv" class="container text-center">
+			The water temperature is <span id="waterTemperature">xx.xxx</span>
+			Celsius <br />
+		</div>
+		<div id="cookingDiv" class="container text-center" hidden>
+			Recipe updated: <span id="startTime">xxx</span> <br />We've been
+			cooking for: <span id="elapsedTime">xxx</span> minutes <br />
+		</div>
+		<h3>Recipe</h3>
+		<label for="inputTotalMinutes">Total Minutes</label> <input
+			class="form-control" id="inputTotalMinutes" type="number"> <label
+			for="inputTemperature">Temperature</label> <input
+			class="form-control" id="inputTemperature" type="number">
+		<button type="button" class="btn btn-md btn-default" onclick="updateRecipe()">Update Recipe</button>
+		<button type="button" class="btn btn-md btn-default" onclick="refreshRecipe()">Refresh Recipe</button>
+		<br/><br/>
+	</div>
 </body>
+</html>

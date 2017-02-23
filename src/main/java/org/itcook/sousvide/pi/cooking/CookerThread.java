@@ -19,8 +19,6 @@
 
 package org.itcook.sousvide.pi.cooking;
 
-import org.itcook.sousvide.pi.sensors.impl.TempAccessor;
-import org.itcook.sousvide.pi.sensors.impl.TempAccessorImpl;
 
 public class CookerThread extends Thread {
     private static final int MINUTE_IN_MILLI_SECONDS = 60_000;
@@ -30,7 +28,7 @@ public class CookerThread extends Thread {
         do {
             Status status = Cooker.getStatus();
 
-            double waterTemp = getTemp();
+            double waterTemp = Cooker.getTemp();
             status.setWaterTemperature(waterTemp);
 
             if (status.isCooking()) {
@@ -60,10 +58,5 @@ public class CookerThread extends Thread {
         } else {
             Cooker.stopCooking();
         }
-    }
-
-    private double getTemp() {
-        TempAccessor tempAccessorImpl = new TempAccessorImpl();
-        return tempAccessorImpl.readTemp();
     }
 }

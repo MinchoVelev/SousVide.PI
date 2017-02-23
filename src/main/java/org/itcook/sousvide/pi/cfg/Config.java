@@ -20,7 +20,7 @@
 package org.itcook.sousvide.pi.cfg;
 
 public class Config {
-    private static final int SERVER_PORT = 8080;
+    private static final int SERVER_PORT = 80;
     private static final int LED_PIN_NUMBER = 0;
     private static final int HEATER_PIN_NUMBER = 27;
     private static final int HEATER_PIN_NUMBER2 = 25;

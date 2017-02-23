@@ -1,0 +1,42 @@
+* {
+	font-size: 16px;
+	line-height: 2;
+}
+
+body {
+	width: 100%;
+	padding-top: 10px;
+}
+
+h1 {
+	font-size: 25px;
+	padding-top: 0px;
+	padding-bottom: 1em;
+}
+
+h3 {
+	font-size: 20px;
+	padding-bottom: 1em;
+	padding-top: 1em;
+}
+
+.img-responsive {
+	max-height: 13em;
+	margin: 0 auto;
+}
+
+.progress {
+	width: 75%;
+	margin: 0 auto;
+}
+
+.progress-bar {
+	-webkit-transition: none !important;
+	transition: none !important;
+}
+#statusDiv{
+	padding-top: 2em;
+}
+button{
+	margin: 1em 1em 1em 1em;
+}

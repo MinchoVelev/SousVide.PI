@@ -19,8 +19,8 @@
 
 package org.itcook.sousvide.pi.cooking;
 
-import org.itcook.sousvide.pi.gpio.impl.HardwareController;
-import org.itcook.sousvide.pi.sensors.impl.TempAccessor;
+import org.itcook.sousvide.pi.gpio.HardwareController;
+import org.itcook.sousvide.pi.sensors.TempAccessor;
 
 public class Cooker {
     private final static Status status = new Status();
@@ -69,13 +69,11 @@ public class Cooker {
 
     public static void heatOn() {
         checkInit();
-        hardwareController.setGreenLedLow();
         hardwareController.setHeaterHigh();
     }
 
     public static void heatOff() {
         checkInit();
-        hardwareController.setGreenLedHigh();
         hardwareController.setHeaterLow();
     }
 
@@ -112,5 +110,9 @@ public class Cooker {
         } catch (InterruptedException e) {
             throw new IllegalStateException("Cooker thread interrupted!");
         }
+    }
+
+    public static double getTemp() {
+        return tempAccessor.readTemp();
     }
 }

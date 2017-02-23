@@ -17,7 +17,7 @@
  * 
  */
 
-package org.itcook.sousvide.pi.sensors.impl;
+package org.itcook.sousvide.pi.sensors;
 
 public interface TempAccessor {
     double readTemp();

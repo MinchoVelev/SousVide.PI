@@ -20,18 +20,19 @@
 package org.itcook.sousvide.pi.gpio.impl;
 
 import org.itcook.sousvide.pi.cfg.Config;
+import org.itcook.sousvide.pi.gpio.HardwareController;
 
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
 import com.pi4j.io.gpio.RaspiPin;
 
-public class HardwareController {
+public class HardwareControllerImpl implements HardwareController {
     private GpioPinDigitalOutput greenLedPin;
     private GpioPinDigitalOutput heaterPin1;
     private GpioPinDigitalOutput heaterPin2;
 
-    public HardwareController() {
+    public HardwareControllerImpl() {
         GpioController gpioController = GpioFactory.getInstance();
 
         greenLedPin = gpioController.provisionDigitalOutputPin(RaspiPin.getPinByAddress(Config.getGreenLedPinNumber()), "led");
@@ -41,22 +42,18 @@ public class HardwareController {
     public void setHeaterHigh() {
         heaterPin1.high();
         heaterPin2.high();
+        greenLedPin.low();
     }
 
     public void setHeaterLow() {
         heaterPin1.low();
         heaterPin2.low();
-    }
-
-    public void setGreenLedHigh() {
         greenLedPin.high();
     }
 
-    public void setGreenLedLow() {
-        greenLedPin.low();
-    }
     public void turnOff() {
-        setGreenLedLow();
-        setHeaterLow();
+        heaterPin1.low();
+        heaterPin2.low();
+        greenLedPin.low();
     }
 }

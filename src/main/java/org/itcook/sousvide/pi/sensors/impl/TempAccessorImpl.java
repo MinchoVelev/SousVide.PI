@@ -28,6 +28,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 
+import org.itcook.sousvide.pi.sensors.TempAccessor;
+
 public class TempAccessorImpl implements TempAccessor {
     private static final String TEMP_PREFIX = "t=";
     private static final String UTF_8 = "UTF-8";
