@@ -56,4 +56,8 @@ public class HardwareControllerImpl implements HardwareController {
         heaterPin2.low();
         greenLedPin.low();
     }
+    @Override
+    public boolean isHeaterHigh() {
+        return heaterPin1.isHigh() && heaterPin2.isHigh();
+    }
 }

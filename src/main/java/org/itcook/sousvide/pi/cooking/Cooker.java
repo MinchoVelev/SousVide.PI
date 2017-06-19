@@ -34,14 +34,14 @@ public class Cooker {
         if (isInit) {
             throw new IllegalStateException("Already initialized");
         }
-        if (newAccessor != null || newController != null) {
+        if (newAccessor != null && newController != null) {
             hardwareController = newController;
             hardwareController.turnOff();
             tempAccessor = newAccessor;
             tempAccessor.readTemp();
             isInit = true;
         } else {
-            throw new IllegalArgumentException("Cannot init with null hardware controller or tem accessor");
+            throw new IllegalArgumentException("Cannot init with null hardware controller or temp accessor");
         }
     }
 

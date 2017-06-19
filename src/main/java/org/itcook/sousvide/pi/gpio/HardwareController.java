@@ -4,4 +4,5 @@ public interface HardwareController {
     void setHeaterHigh();
     void setHeaterLow();
     void turnOff();
+    boolean isHeaterHigh();
 }

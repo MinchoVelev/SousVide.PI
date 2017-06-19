@@ -85,6 +85,12 @@ public class Start {
                 // TODO Auto-generated method stub
 
             }
+
+            @Override
+            public boolean isHeaterHigh() {
+                // TODO Auto-generated method stub
+                return false;
+            }
         };
     }
 }
